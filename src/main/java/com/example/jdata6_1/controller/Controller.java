@@ -3,6 +3,7 @@ package com.example.jdata6_1.controller;
 import com.example.jdata6_1.entity.Person;
 import com.example.jdata6_1.service.Service;
 import lombok.Data;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Optional;
 @Data
 @RestController
 @RequestMapping("/persons")
+
 public class Controller {
 
     private final Service service;

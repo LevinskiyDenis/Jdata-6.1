@@ -7,8 +7,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+
 @Data
 @org.springframework.stereotype.Service
+
 public class UserCredentialsService implements UserDetailsService {
 
     private final CustomizedUserCredentialsRepository repository;

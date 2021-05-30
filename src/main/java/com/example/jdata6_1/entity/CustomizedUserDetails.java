@@ -3,9 +3,12 @@ package com.example.jdata6_1.entity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+
 
 public class CustomizedUserDetails implements UserDetails {
 
@@ -17,8 +20,12 @@ public class CustomizedUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> list = List.of(new SimpleGrantedAuthority(userCredentials.getRole()));
-        return list;
+
+        Set<? extends GrantedAuthority> authorities = userCredentials.getRole().getOperations();
+        // List<GrantedAuthority> list = List.of(new SimpleGrantedAuthority(userCredentials.getRole()));
+        //  List<GrantedAuthority> list = List.of(new SimpleGrantedAuthority("Yeah"));
+        System.out.println(authorities);
+        return authorities;
     }
 
     @Override
