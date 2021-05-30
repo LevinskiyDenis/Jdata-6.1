@@ -6,6 +6,7 @@ import lombok.Data;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Data
@@ -15,10 +16,12 @@ public class UserCredentialsService implements UserDetailsService {
 
     private final CustomizedUserCredentialsRepository repository;
 
+    @Transactional
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         CustomizedUserDetails userDetails = new CustomizedUserDetails(repository.findByLoginEquals(s).orElseThrow(() -> new UsernameNotFoundException("Username not found")));
         return userDetails;
     }
+
 
 }

@@ -19,7 +19,7 @@ public class Operation implements GrantedAuthority {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @ManyToMany (fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @ManyToMany (fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinTable(name = "role_operation",
             joinColumns = @JoinColumn(name = "operation_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
